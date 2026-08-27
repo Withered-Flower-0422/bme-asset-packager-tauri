@@ -1,0 +1,48 @@
+.self,
+.self span {
+  transition: opacity 0.35s ease;
+  display: inline-block;
+}
+
+.self {
+  position: relative;
+  margin-bottom: 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  letter-spacing: 1px;
+  line-height: 1em;
+  cursor: default;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #bd34fe, #ff6b9d, #41d1ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  animation: hue 6s linear infinite;
+}
+
+.active {
+  .gradient {
+    opacity: 1;
+  }
+
+  .origin {
+    opacity: 0;
+  }
+}
+
+@keyframes hue {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}

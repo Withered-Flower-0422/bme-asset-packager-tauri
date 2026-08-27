@@ -1,0 +1,70 @@
+import type { Locale } from "."
+import { getRandomItem } from "../utils/rnd"
+
+export default {
+  abbr: "EN",
+  missingFormulaNameWarning: "Formula name required",
+  saveFormulaSuccess: inputValue => `Save successfully: ${inputValue}`,
+  overwriteWarningTitle: "Overwrite?",
+  overwriteWarningMessage: inputValue =>
+    `"${inputValue}" already exists. Do you want to overwrite it?`,
+  noSelectedFormulaWarning: "Please select a formula to load",
+  loadFormulaSuccess: selectedValue => `"${selectedValue}" loaded`,
+  addFolders: "Add Folders",
+  wrongFolderPathWarning:
+    "The added folders must be the sub-folders of the Assets folders (e.g. Items/Maze). Invalid folders ignored.",
+  addAssets: "Add Assets",
+  wrongAssetPathWarning:
+    "The added assets must be under the sub-folders of the Assets folders (e.g. Items/Maze/MazeWall.item). Invalid assets ignored.",
+  addIcons: "Add Icons",
+  wrongIconPathWarning:
+    'Icons must be under "Scripts/_Editor/Icons/". Invalid assets ignored.',
+  formulaName: "Formula Name",
+  save: "Save",
+  selectFormula: "Select Formula",
+  deleteWarningTitle: "Delete?",
+  deleteWarningMessage: label => `Are you sure to delete "${label}"?`,
+  import: "Import",
+  packing: "Packing...",
+  zip: "Zip",
+  ok: "OK",
+  cancel: "Cancel",
+  packSuccessTitle: "Pack Success",
+  packSuccessMessage: zipSize => `Zip file size: ${zipSize} bytes`,
+  notFoundAssetWarningTitle: "Not Found Assets",
+  notFoundAssetWarningFooter:
+    "*Sometimes after editing assets, some old related assets may remain. As long as these assets work well in game, these unfounded assets can be ignored.",
+  bmeAssetPackager: "BME Asset Packager",
+  author: author => `Author: ${author}`,
+  version: version => `Version: ${version}`,
+  license: license => `License: ${license}`,
+  mushQuote: index =>
+    getRandomItem(
+      [
+        "Bad",
+        "Good",
+        "Godlike",
+        "Weird",
+        "Abstract",
+        "Freaking awesome!",
+        "Insanely strong!",
+        "So trash",
+        "Miss you.",
+        "Drag them over for mapping.",
+        "Sneak into the official map.",
+        "Legend!",
+        "OPT!!!",
+        "Invincible!",
+        "Trashy Unity",
+        "I'm working on it, I'm working on it!",
+        "I'm on it, I'm on it!",
+        "I'm writing it, I'm writing it!",
+        "Believe Mush will become unfortunate.",
+        "Please subscribe to the Mush Accelerator.",
+        "Rolling a ball feels kind of pointless.",
+        "Mush is completely dead. Stew it.",
+        "Creating out of passion, looking for a mapping bro to remake a high-definition version of BLX. I'm a game developer, and I also work on the music. We really need your help. Our project is facing countless difficulties, like a poor little kitten stuck in a tree. If you could join us and give us some guidance and support, you'd be our savior! Please become our friend and let's overcome all the obstacles together!",
+      ],
+      index,
+    ),
+} satisfies Locale

@@ -1,0 +1,18 @@
+.self {
+  position: absolute;
+  bottom: 1%;
+  right: 1%;
+  font-size: 12px;
+  cursor: help;
+  user-select: none;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: italic;
+}

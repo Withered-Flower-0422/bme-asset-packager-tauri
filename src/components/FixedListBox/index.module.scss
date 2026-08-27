@@ -1,0 +1,42 @@
+.self {
+  background-color: transparent;
+  overflow: auto;
+  scrollbar-width: none;
+  border: 2px dashed #666;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+
+  &.dragging {
+    border-color: #eee;
+    background-color: #444;
+  }
+}
+
+.item {
+  padding: 2px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 8px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #333;
+  }
+}
+
+.itemContent {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  line-break: anywhere;
+  color: #eee;
+  display: block;
+  font-size: 14px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}

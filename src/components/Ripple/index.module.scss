@@ -1,0 +1,28 @@
+.ripple {
+  position: fixed;
+  z-index: 999999;
+
+  width: 35px;
+  height: 35px;
+
+  border: 8px solid #ddd;
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  transform: translate(-50%, -50%) scale(0);
+
+  animation: ripple 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,70 @@
+import type { Locale } from "."
+import { getRandomItem } from "../utils/rnd"
+
+export default {
+  abbr: "ES",
+  missingFormulaNameWarning: "Se requiere el nombre de la fórmula",
+  saveFormulaSuccess: inputValue => `Guardado correctamente: ${inputValue}`,
+  overwriteWarningTitle: "¿Sobrescribir?",
+  overwriteWarningMessage: inputValue =>
+    `"${inputValue}" ya existe. ¿Desea sobrescribirlo?`,
+  noSelectedFormulaWarning: "Seleccione una fórmula para cargar",
+  loadFormulaSuccess: selectedValue => `"${selectedValue}" cargada`,
+  addFolders: "Añadir carpetas",
+  wrongFolderPathWarning:
+    "Las carpetas añadidas deben ser subcarpetas de la carpeta Assets (por ejemplo: Items/Maze). Las carpetas no válidas serán ignoradas.",
+  addAssets: "Añadir recursos",
+  wrongAssetPathWarning:
+    "Los recursos añadidos deben estar dentro de las subcarpetas de la carpeta Assets (por ejemplo: Items/Maze/MazeWall.item). Los recursos no válidos serán ignorados.",
+  addIcons: "Añadir iconos",
+  wrongIconPathWarning:
+    'Los iconos deben estar dentro de "Scripts/_Editor/Icons/". Los recursos no válidos serán ignorados.',
+  formulaName: "Nombre de la fórmula",
+  save: "Guardar",
+  selectFormula: "Seleccionar fórmula",
+  deleteWarningTitle: "¿Eliminar?",
+  deleteWarningMessage: label => `¿Está seguro de eliminar "${label}"?`,
+  import: "Importar",
+  packing: "Empaquetando...",
+  zip: "ZIP",
+  ok: "Aceptar",
+  cancel: "Cancelar",
+  packSuccessTitle: "Empaquetado correctamente",
+  packSuccessMessage: zipSize => `Tamaño del archivo ZIP: ${zipSize} bytes`,
+  notFoundAssetWarningTitle: "Recursos no encontrados",
+  notFoundAssetWarningFooter:
+    "*A veces, después de editar recursos, pueden quedar algunos recursos antiguos relacionados. Siempre que estos recursos funcionen correctamente en el juego, pueden ignorarse.",
+  bmeAssetPackager: "Empaquetador de recursos BME",
+  author: author => `Autor: ${author}`,
+  version: version => `Versión: ${version}`,
+  license: license => `Licencia: ${license}`,
+  mushQuote: index =>
+    getRandomItem(
+      [
+        "Malo",
+        "Bueno",
+        "Dios",
+        "Raro",
+        "Abstracto",
+        "¡Brutal!",
+        "¡Demasiado fuerte!",
+        "Qué basura",
+        "Te extraño.",
+        "Tráelo para que haga el mapping.",
+        "Colarse en el mapa oficial.",
+        "¡Un crack!",
+        "¡OPT!!!",
+        "¡Invencible!",
+        "Unity de mierda",
+        "¡Ya lo estoy haciendo, ya lo estoy haciendo!",
+        "¡Ya estoy con ello, ya estoy con ello!",
+        "¡Ya lo estoy escribiendo, ya lo estoy escribiendo!",
+        "Cree que Mush será desgraciado.",
+        "Por favor, suscríbete al acelerador Mush.",
+        "Hacer rodar una pelota parece un poco inútil.",
+        "Mush está completamente muerto. A guisarlo.",
+        "Lo hacemos por pasión y buscamos a un hermano que haga mapping para rehacer una versión en alta definición de BLX. Soy desarrollador de videojuegos y también me encargo de la música. Realmente necesitamos tu ayuda. Nuestro proyecto se enfrenta a innumerables dificultades, como un pobre gatito atrapado en un árbol. Si pudieras unirte a nosotros y darnos algo de orientación y apoyo, ¡serías nuestro salvador! ¡Hazte nuestro amigo y superemos juntos todos los obstáculos!",
+      ],
+      index,
+    ),
+} satisfies Locale
