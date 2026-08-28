@@ -26,7 +26,7 @@ export default function Info() {
                 href="https://github.com/Withered-Flower-0422/bme-asset-packager-tauri/releases"
                 target="_blank"
               >
-                {t("version", packageJson.version)}
+                {t("version", packageJson.version)} (tauri)
               </a>
               <a
                 href="https://github.com/Withered-Flower-0422/bme-asset-packager-tauri/blob/main/LICENSE"

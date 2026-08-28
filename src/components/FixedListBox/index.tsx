@@ -65,13 +65,19 @@ export default forwardRef<FixedListBoxRef, FixedListBoxProps>(
         .onDragDropEvent(({ payload }) => {
           const { type } = payload
 
-          if (type === "enter" || type === "leave") return
+          if (type === "enter") return
+          if (type === "leave") {
+            setDragging(false)
+            return
+          }
 
-          const {
-            position: { x, y },
-          } = payload
           const { left, right, top, bottom } =
             cardRef.current.getBoundingClientRect()
+          let {
+            position: { x, y },
+          } = payload
+          x /= devicePixelRatio
+          y /= devicePixelRatio
 
           const inside = x >= left && x <= right && y >= top && y <= bottom
 
