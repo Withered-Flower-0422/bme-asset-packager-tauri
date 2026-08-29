@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import t, { type Lang } from "../locales"
 import store from "../stores"
 
-export default function () {
+export default () => {
   const [lang, setLang] = useState<Lang>("en")
 
   useEffect(() => void store.get("lang").then(la => setLang((t.lang = la))), [])

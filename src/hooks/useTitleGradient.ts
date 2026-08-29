@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import store from "../stores"
 
-export default function () {
+export default () => {
   const [titleGradient, setTitleGradient] = useState(false)
 
   useEffect(() => void store.get("titleGradient").then(setTitleGradient), [])

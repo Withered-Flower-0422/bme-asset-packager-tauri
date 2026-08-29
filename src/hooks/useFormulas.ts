@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import store, { type Formula, type Formulas } from "../stores"
 
-export default function () {
+export default () => {
   const [formulas, setFormulas] = useState<Formulas>({})
 
   useEffect(() => void store.get("formulas").then(setFormulas), [])

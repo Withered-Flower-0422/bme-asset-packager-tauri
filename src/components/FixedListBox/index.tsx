@@ -105,7 +105,7 @@ export default forwardRef<FixedListBoxRef, FixedListBoxProps>(
         subscribed = false
         unlisten?.()
       }
-    }, [])
+    }, [disableDirectories, disableFiles, onDropFiles])
 
     useImperativeHandle(ref, () => ({
       getItems: () => items.map(({ content }) => content),

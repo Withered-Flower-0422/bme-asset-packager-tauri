@@ -3,7 +3,7 @@ import type { Lang } from "../locales"
 
 type Override<A, B> = Omit<A, keyof B> & B
 
-type Store<T = {}> = Override<
+type Store<T extends object = object> = Override<
   S,
   {
     get<K extends keyof T>(key: K): Promise<T[K]>

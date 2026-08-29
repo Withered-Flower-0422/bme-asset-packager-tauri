@@ -28,6 +28,7 @@ export default function Mush() {
         placement="leftTop"
         color="#333"
         title={() =>
+          /* eslint-disable-next-line */
           Math.random() > 0.1 ? (
             <span className={styles.quote}>{t("mushQuote")}</span>
           ) : (
