@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "bme-asset-packager-tauri",
-  "version": "0.0.0",
+  "version": "../package.json",
   "identifier": "com.tauri-app.bme-asset-packager",
   "build": {
     "beforeDevCommand": "npm run dev",

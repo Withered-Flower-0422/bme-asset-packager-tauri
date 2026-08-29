@@ -2,7 +2,6 @@
 name = "bme-asset-packager-tauri"
 description = "A tool helps to pack BME assets."
 authors = ["Withered Flower"]
-version = "0.0.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
@@ -31,3 +30,12 @@ regex = "1.13.1"
 tauri-plugin-single-instance = "2"
 tauri-plugin-window-state = "2"
 
+[profile.dev]
+incremental = true # Compile your binary in smaller steps.
+
+[profile.release]
+codegen-units = 1 # Allows LLVM to perform better optimization.
+lto = true # Enables link-time-optimizations.
+opt-level = "s" # Prioritizes small binary size. Use `3` if you prefer speed.
+panic = "abort" # Higher performance by disabling panic handlers.
+strip = true # Ensures debug symbols are removed.
