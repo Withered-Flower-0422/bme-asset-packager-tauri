@@ -1,48 +1,22 @@
-import { load } from "@tauri-apps/plugin-store"
-import { useCallback, useEffect, useState } from "react"
-
-interface Formula {
-  folders: string[]
-  extras: string[]
-  icons: string[]
-}
-
-type Formulas = Record<string, Formula>
-
-const store = await load("store.json")
-
-const getFormulas = async () => (await store.get<Formulas>("formulas")) ?? {}
+import { useEffect, useState } from "react"
+import store, { type Formula, type Formulas } from "../stores"
 
 export default function () {
   const [formulas, setFormulas] = useState<Formulas>({})
 
-  const loadFormulas = useCallback(
-    async () => setFormulas(await getFormulas()),
-    [],
-  )
+  useEffect(() => void store.get("formulas").then(setFormulas), [])
 
-  const deleteFormula = useCallback(
-    async (name: string) => {
-      const _formulas = await getFormulas()
-      delete _formulas[name]
-      await store.set("formulas", _formulas)
-      await loadFormulas()
+  return {
+    formulas,
+    deleteFormula: (name: string) => {
+      const { [name]: _, ...rest } = formulas
+      store.set("formulas", rest)
+      setFormulas(rest)
     },
-    [loadFormulas],
-  )
-
-  const saveFormula = useCallback(
-    async (name: string, formula: Formula) => {
-      await store.set("formulas", {
-        ...(await getFormulas()),
-        [name]: formula,
-      })
-      await loadFormulas()
+    saveFormula: (name: string, formula: Formula) => {
+      const newFormulas = { ...formulas, [name]: formula }
+      store.set("formulas", newFormulas)
+      setFormulas(newFormulas)
     },
-    [loadFormulas],
-  )
-
-  useEffect(() => void loadFormulas(), [loadFormulas])
-
-  return { formulas, deleteFormula, saveFormula, loadFormulas }
+  }
 }

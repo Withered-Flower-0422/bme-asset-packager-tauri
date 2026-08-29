@@ -1,26 +1,16 @@
-import { load } from "@tauri-apps/plugin-store"
-import { useCallback, useEffect, useState } from "react"
-
-const store = await load("store.json")
+import { useEffect, useState } from "react"
+import store from "../stores"
 
 export default function () {
-  const [titleGradient, _setTitleGradient] = useState(false)
+  const [titleGradient, setTitleGradient] = useState(false)
 
-  const loadTitleGradient = useCallback(
-    async () =>
-      _setTitleGradient((await store.get<boolean>("titleGradient")) ?? false),
-    [],
-  )
+  useEffect(() => void store.get("titleGradient").then(setTitleGradient), [])
 
-  const setTitleGradient = useCallback(
-    async (titleGradient: boolean) => {
-      await store.set("titleGradient", titleGradient)
-      await loadTitleGradient()
+  return {
+    titleGradient,
+    setTitleGradient: (value: boolean) => {
+      store.set("titleGradient", value)
+      setTitleGradient(value)
     },
-    [loadTitleGradient],
-  )
-
-  useEffect(() => void loadTitleGradient(), [loadTitleGradient])
-
-  return { titleGradient, loadTitleGradient, setTitleGradient }
+  }
 }

@@ -1,26 +1,18 @@
-import { load } from "@tauri-apps/plugin-store"
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import t, { type Lang } from "../locales"
-
-const store = await load("store.json")
+import store from "../stores"
 
 export default function () {
-  const [lang, _setLang] = useState<Lang>("en")
+  const [lang, setLang] = useState<Lang>("en")
 
-  const loadLang = useCallback(
-    async () => _setLang((t.lang = (await store.get<Lang>("lang")) ?? "en")),
-    [],
-  )
+  useEffect(() => void store.get("lang").then(la => setLang((t.lang = la))), [])
 
-  const setLang = useCallback(
-    async (lang: Lang) => {
-      await store.set("lang", lang)
-      await loadLang()
+  return {
+    lang,
+    setLang: (value: Lang) => {
+      t.lang = value
+      store.set("lang", value)
+      setLang(value)
     },
-    [loadLang],
-  )
-
-  useEffect(() => void loadLang(), [loadLang])
-
-  return { lang, loadLang, setLang }
+  }
 }
